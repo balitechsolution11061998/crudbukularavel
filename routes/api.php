@@ -17,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/login', App\Http\Controllers\Api\LoginController::class)->name('login');
+
+
+
+Route::get('/books', [App\Http\Controllers\Api\BookController::class, 'data'])->name('data.books');
+Route::get('/books/{id}', [App\Http\Controllers\Api\BookController::class, 'show'])->name('data.books.show');
+Route::post('/books/store', [App\Http\Controllers\Api\BookController::class, 'storeOrUpdate'])->name('books.store');
+Route::delete('/books/destroy/{id}', [App\Http\Controllers\Api\BookController::class, 'destroy'])->name('books.destroy');
+
+
+
